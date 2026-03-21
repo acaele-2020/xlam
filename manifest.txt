@@ -1,5 +1,6 @@
 VERSION=9.0.1
 URL=https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.1.xlam
+SIZE=464563
 OBLIGATORIA=0
 NOTAS=Primera version con sistema de actualizacion
 HISTORIAL=9.0.0|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.0.xlam;8.9.0|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V8.9.0.xlam
