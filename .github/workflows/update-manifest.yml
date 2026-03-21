@@ -1,0 +1,93 @@
+name: Update ACAELE manifest
+
+on:
+  push:
+    paths:
+      - 'releases/*.xlam'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build manifest automatically
+        shell: bash
+        run: |
+          set -e
+
+          REPO="acaele-2020/xlam"
+          RELEASE_DIR="releases"
+          MANIFEST_FILE="manifest.txt"
+
+          shopt -s nullglob
+          files=($RELEASE_DIR/acaele_5_V*.xlam)
+
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No hay archivos XLAM en releases/"
+            exit 1
+          fi
+
+          versions=()
+          for f in "${files[@]}"; do
+            name="$(basename "$f")"
+            if [[ "$name" =~ ^acaele_5_V([0-9]+\.[0-9]+\.[0-9]+)\.xlam$ ]]; then
+              versions+=("${BASH_REMATCH[1]}")
+            fi
+          done
+
+          if [ ${#versions[@]} -eq 0 ]; then
+            echo "No se detectaron versiones válidas."
+            exit 1
+          fi
+
+          highest_version=$(printf '%s\n' "${versions[@]}" | sort -V | tail -n 1)
+          highest_file="acaele_5_V${highest_version}.xlam"
+
+          size=$(wc -c < "${RELEASE_DIR}/${highest_file}" | tr -d ' ')
+
+          latest_url="https://raw.githubusercontent.com/${REPO}/main/${RELEASE_DIR}/${highest_file}"
+
+          history_entries=()
+          for v in $(printf '%s\n' "${versions[@]}" | sort -V -r); do
+            file="acaele_5_V${v}.xlam"
+            url="https://raw.githubusercontent.com/${REPO}/main/${RELEASE_DIR}/${file}"
+            history_entries+=("${v}|${url}")
+          done
+
+          history=$(IFS=';'; echo "${history_entries[*]}")
+
+          cat > "$MANIFEST_FILE" <<EOF
+          VERSION=${highest_version}
+          URL=${latest_url}
+          SIZE=${size}
+          OBLIGATORIA=0
+          NOTAS=Actualización automática generada por GitHub Actions
+          HISTORIAL=${history}
+          EOF
+
+          echo "Manifest generado:"
+          cat "$MANIFEST_FILE"
+
+      - name: Commit manifest if changed
+        shell: bash
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add manifest.txt
+
+          if git diff --cached --quiet; then
+            echo "Sin cambios en manifest.txt"
+            exit 0
+          fi
+
+          git commit -m "Auto-update manifest for ACAELE releases"
+          git push
