@@ -1,6 +1,6 @@
-VERSION=9.0.7
-URL=https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.7.xlam
-SIZE=503293
+VERSION=9.0.8
+URL=https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.8.xlam
+SIZE=486717
 OBLIGATORIA=0
 NOTAS=Actualización automática generada por GitHub Actions
-HISTORIAL=9.0.7|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.7.xlam;9.0.6|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.6.xlam;9.0.5|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.5.xlam;9.0.4|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.4.xlam;9.0.3|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.3.xlam;9.0.2|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.2.xlam;9.0.1|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.1.xlam
+HISTORIAL=9.0.8|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.8.xlam;9.0.7|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.7.xlam;9.0.6|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.6.xlam;9.0.5|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.5.xlam;9.0.4|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.4.xlam;9.0.3|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.3.xlam;9.0.2|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.2.xlam;9.0.1|https://raw.githubusercontent.com/acaele-2020/xlam/main/releases/acaele_5_V9.0.1.xlam
